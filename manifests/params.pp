@@ -206,6 +206,7 @@ class foreman_proxy::params {
   $dhcp_managed            = true
   $dhcp_provider           = 'isc'
   $dhcp_vendor             = undef
+  $dhcp_subnets            = undef
   $dhcp_interface          = 'eth0'
   $dhcp_gateway            = '192.168.100.1'
   $dhcp_range              = false

@@ -360,6 +360,7 @@ class foreman_proxy (
   $dhcp_managed               = $foreman_proxy::params::dhcp_managed,
   $dhcp_provider              = $foreman_proxy::params::dhcp_provider,
   $dhcp_vendor                = $foreman_proxy::params::dhcp_vendor,
+  $dhcp_subnets               = $foreman_proxy::params::dhcp_subnets,
   $dhcp_option_domain         = $foreman_proxy::params::dhcp_option_domain,
   $dhcp_interface             = $foreman_proxy::params::dhcp_interface,
   $dhcp_gateway               = $foreman_proxy::params::dhcp_gateway,
@@ -462,6 +463,7 @@ class foreman_proxy (
   }
   # dhcp_vendor is deprecated in favour of dhcp_provider
   $dhcp_provider_real = pick($dhcp_vendor, $dhcp_provider)
+  validate_re($dhcp_subnets, '^([0-9]{1,3}[.]){3}[0-9]{1,3}([, ]([0-9]{1,3}[.]){3}[0-9]{1,3})*$')
 
   # Validate dns params
   validate_bool($dns, $dns_split_config_files)
