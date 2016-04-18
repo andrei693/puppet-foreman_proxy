@@ -187,6 +187,8 @@
 #
 # $dhcp_vendor::                DHCP vendor (deprecated, use dhcp_provider)
 #
+# $dhcp_subnets::               DHCP subnets
+#
 # $dhcp_option_domain::         DHCP use the dhcpd config option domain-name
 #                               type:array
 #
