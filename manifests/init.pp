@@ -187,6 +187,8 @@
 #
 # $dhcp_vendor::                DHCP vendor (deprecated, use dhcp_provider)
 #
+# $dhcp_subnets::               DHCP subnets
+#
 # $dhcp_option_domain::         DHCP use the dhcpd config option domain-name
 #                               type:array
 #
@@ -360,6 +362,7 @@ class foreman_proxy (
   $dhcp_managed               = $foreman_proxy::params::dhcp_managed,
   $dhcp_provider              = $foreman_proxy::params::dhcp_provider,
   $dhcp_vendor                = $foreman_proxy::params::dhcp_vendor,
+  $dhcp_subnets               = $foreman_proxy::params::dhcp_subnets,
   $dhcp_option_domain         = $foreman_proxy::params::dhcp_option_domain,
   $dhcp_interface             = $foreman_proxy::params::dhcp_interface,
   $dhcp_gateway               = $foreman_proxy::params::dhcp_gateway,
@@ -462,6 +465,9 @@ class foreman_proxy (
   }
   # dhcp_vendor is deprecated in favour of dhcp_provider
   $dhcp_provider_real = pick($dhcp_vendor, $dhcp_provider)
+  if $dhcp_subnets {
+    validate_array($dhcp_subnets)
+  }
 
   # Validate dns params
   validate_bool($dns, $dns_split_config_files)
