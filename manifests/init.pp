@@ -466,7 +466,7 @@ class foreman_proxy (
   # dhcp_vendor is deprecated in favour of dhcp_provider
   $dhcp_provider_real = pick($dhcp_vendor, $dhcp_provider)
   if $dhcp_subnets {
-    validate_re($dhcp_subnets, '^([0-9]{1,3}[.]){3}[0-9]{1,3}\/([0-9]{1,3}[.]){3}[0-9]{1,3}(, ([0-9]{1,3}[.]){3}[0-9]{1,3}\/([0-9]{1,3}[.]){3}[0-9]{1,3})*$')
+    validate_array($dhcp_subnets)
   }
 
   # Validate dns params
